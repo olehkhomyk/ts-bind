@@ -13,7 +13,7 @@ Example:
         private prop: string;
 
         constructor(value) {
-            this.porp = value;
+            this.prop = value;
         }
     
         // Here ypu bind the method to MyClass.

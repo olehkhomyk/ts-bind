@@ -1,6 +1,6 @@
 {
   "name": "ts-bind",
-  "version": "1.0.0",
+  "version": "1.2.2",
   "description": "Bind decorator, witch decorate method to class instance",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -24,7 +24,7 @@
     "url": "https://github.com/olehkhomyk/ts-bind/issues"
   },
   "homepage": "https://github.com/olehkhomyk/ts-bind#readme",
-  "author": "<Oleh.Khomyk@gmail.com> (https://github.com/olehkhomyk)",
+  "author": " <Oleh.Khomyk@gmail.com> (https://github.com/olehkhomyk)",
   "license": "ISC",
   "devDependencies": {
     "@types/jest": "^24.0.23",
@@ -37,5 +37,9 @@
   },
   "files": [
     "lib/**/*"
-  ]
+  ],
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {}
 }

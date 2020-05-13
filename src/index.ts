@@ -1,29 +1,37 @@
 /**
  * Bind method to class instance.
  *
- * @param target
- * @param propertyKey
- * @param descriptor
+ * @param target Class instance.
+ * @param propertyKey Property Key.
+ * @param descriptor Method descriptor.
  */
-function bind<T extends () => void>(target: any, propertyKey: string, descriptor: PropertyDescriptor): any {
-  if (!descriptor || (typeof descriptor.value !== 'function')) {
-    throw new TypeError(`Decorator @bind can only decorate method, seems like property: ${propertyKey} is not a method`);
+// tslint:disable:max-line-length
+function bind<T extends Function>(target: object, propertyKey: string, descriptor: TypedPropertyDescriptor<T>): TypedPropertyDescriptor<T> | void {
+  // Safe check
+  if(!descriptor || (typeof descriptor.value !== 'function')) {
+    throw new TypeError(`Only methods can be decorated with @bind. <${propertyKey}> is not a method!`);
   }
+
+  const { set, value, writable, enumerable, configurable } = descriptor;
 
   return {
-    configurable: true,
+    configurable,
+    enumerable,
     get(this: T): T {
-      const bound =  descriptor.value.bind(this);
+      const func = value.bind(this);
 
-      Object.defineProperty(target, propertyKey, {
-        configurable: true,
-        enumerable: true,
-        value: bound
+      // Remember bound function
+      Object.defineProperty(this, propertyKey, {
+        configurable,
+        enumerable,
+        writable,
+        value: func
       });
 
-      return bound;
-    }
-  }
+      return func;
+    },
+    set
+  };
 }
 
 export { bind };
