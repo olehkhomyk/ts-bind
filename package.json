@@ -1,8 +1,9 @@
 {
-  "name": "tst-bind",
+  "name": "ts-bind",
   "version": "1.0.0",
   "description": "Bind decorator, witch decorate method to class instance",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "test": "jest --config jestconfig.json",
     "build": "tsc",
@@ -15,6 +16,14 @@
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olehkhomyk/ts-bind.git"
+  },
+  "bugs": {
+    "url": "https://github.com/olehkhomyk/ts-bind/issues"
+  },
+  "homepage": "https://github.com/olehkhomyk/ts-bind#readme",
   "author": "<Oleh.Khomyk@gmail.com> (https://github.com/olehkhomyk)",
   "license": "ISC",
   "devDependencies": {
@@ -25,5 +34,8 @@
     "tslint": "^5.20.1",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.7.3"
-  }
+  },
+  "files": [
+    "lib/**/*"
+  ]
 }

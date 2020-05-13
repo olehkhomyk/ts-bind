@@ -5,7 +5,7 @@
  * @param propertyKey
  * @param descriptor
  */
-function bind<T extends Function>(target: any, propertyKey: string, descriptor: PropertyDescriptor): any {
+function bind<T extends () => void>(target: any, propertyKey: string, descriptor: PropertyDescriptor): any {
   if (!descriptor || (typeof descriptor.value !== 'function')) {
     throw new TypeError(`Decorator @bind can only decorate method, seems like property: ${propertyKey} is not a method`);
   }
@@ -25,25 +25,5 @@ function bind<T extends Function>(target: any, propertyKey: string, descriptor: 
     }
   }
 }
-
-class TestClass {
-  public prop: string;
-
-  constructor(value: string) {
-    this.prop = value;
-  }
-
-  @bind
-  public getProp(): string {
-    return this.prop;
-  }
-}
-
-const testValue = 'test value';
-const testObject = new TestClass(testValue);
-
-const { getProp } = testObject;
-
-console.log(getProp());
 
 export { bind };
